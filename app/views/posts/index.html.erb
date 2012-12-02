@@ -1,0 +1,16 @@
+<header>
+  <h1>Oddities</h1>
+  <%= link_to '+', new_post_path, :class=>'new-post' %>
+</header>
+<div id='container'>
+  <% @posts.each do |post| %>  
+    <div class='item'>
+      <p><%= image_tag post.image.url(:thumb) %></p>
+      <p><%= post.title %></p>
+      <p><%= truncate post.content, length: 50 %></p>
+      <%= link_to 'Show', post %>
+      <%= link_to 'Edit', edit_post_path(post) %>
+      <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %>
+    </div>
+  <% end %>
+</div>
