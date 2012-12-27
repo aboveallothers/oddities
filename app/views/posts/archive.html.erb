@@ -2,25 +2,16 @@
     <div>
         <h1>Oddities</h1>
         <a class='hide scroll' href="#" title="back to top">scroll to top</a>
-        <%= link_to '+', new_post_path, :class=>'new-post' %>
     </div>
-</header><!-- /header -->
+</header>
 
-<section id='gallery'>
+<section id='archive' class='content'>
     <ul>
       <% @posts.each do |post| %>  
         <li>
-            <a href="<%= url_for(post) %>" class="inner">
-                <div class="li-img">
-                    <%= image_tag post.image.url(:thumb) %>
-                </div>
-                
-                <div class="li-text">
-                    <h3 class="li-head"><%= post.title %></h3>
-                    <p class="li-sub"><%= truncate post.content, length: 50 %></p>
-                </div>
-            </a>
-        </li>
+            <h3><a href="<%= url_for(post) %>"><%= post.title %></a></h3>
+            <time><%= post.created_at %></time>
+        </li> 
         <% end %>
     </ul>
 </section>
@@ -30,7 +21,7 @@
         <div>
             <h2>Oddities</h2>
             <p>Oddities is a scrapyard of graphical obscurities.</p>
-            <p>Made by - <a href='#'>Above All Others</a></p>
+            <p>Made by one man studio - <a href='#'>Above All Others</a></p>
         </div>
         <div id='twitter'>
             <h2>Twitter</h2>

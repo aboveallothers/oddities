@@ -1,13 +1,25 @@
 class PostsController < ApplicationController
 
-  http_basic_authenticate_with :name => "aao_admin", :password => "sUpR3!M", :except => [:index, :show]
+  http_basic_authenticate_with :name => "aao_admin", :password => "sUpR3!M", :except => [:index, :show, :archive]
+  
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.all
+    @posts = Post.first(9)
 
     respond_to do |format|
       format.html # index.html.erb
+      format.json { render json: @posts }
+    end
+  end
+
+  # GET /posts
+  # GET /posts.json
+  def archive
+    @posts = Post.all
+
+    respond_to do |format|
+      format.html # archive.html.erb
       format.json { render json: @posts }
     end
   end
@@ -82,4 +94,5 @@ class PostsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
 end

@@ -1,24 +1,19 @@
-<p id="notice"><%= notice %></p>
+<header>
+	<div>
+	    <h1>Oddities / <%= @post.title %></h1>
+      <%= link_to 'Back', posts_path %> 
+      <a class='hide scroll' href="#" title="back to top">scroll to top</a>
+	</div>
+</header><!-- /header -->
 
+<section id='post' class='content'>
+    <p><%= @post.content %></p>
+    <%= image_tag @post.image.url %>
+</section>
 
-<p>
-  <b>Title:</b>
-  <%= @post.title %>
-</p>
-
-<p>
-	<%= image_tag @post.image.url %>
-</p>
-
-<p>
-  <b>Content:</b>
-  <%= @post.content %>
-</p>
-
-<p>
-  <b>Tags:</b>
-  <%= join_tags(@post) %>
-</p>
-
-<%= link_to 'Edit', edit_post_path(@post) %> |
-<%= link_to 'Back', posts_path %>
+<footer>
+    <div>
+      <a href="#" title="Above All Others">Above All Others</a></li>
+      <a href="#" title="Above All Others">Twitter</a>
+    </div>
+</footer>

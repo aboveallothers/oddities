@@ -12,6 +12,35 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require_tree .
-//= require masonry 
-//= require core
+//= require_tree
+//= require modernizr
+
+$(function() {
+	var twitter_api_url = 'http://search.twitter.com/search.json',
+		twitter_user = 'oddities_';
+ 	
+ 	$.ajaxSetup({cache: true});
+
+	$.getJSON(twitter_api_url + '?callback=?&rpp=3&q=from:' + twitter_user, function(data) {
+    	$.each(data.results, function(i, tweet) {
+	        if(tweet.text !== undefined) {
+	        	var date_tweet = new Date(tweet.created_at),
+	          		date_now = new Date(),
+	        		date_diff = date_now - date_tweet,
+	          		hours = Math.round(date_diff/(1000*60*60)),
+	          		tweet_html = '<article><p>' + tweet.text + '<\/p><time>' + hours + ' hours ago<\/time><\/article>';
+	 			
+	 			$('#twitter').append(tweet_html);
+	        }
+    	});
+  	});
+
+	$(window).scroll(function(){
+		$('header a').fadeIn(800);
+	});
+
+	$('.scroll').bind('click', function () {
+		$("html, body").animate({ scrollTop: '0' }, 500);
+		return false;
+	})
+});
