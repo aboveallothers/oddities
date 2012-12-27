@@ -1,4 +1,4 @@
-Blogonrails::Application.routes.draw do
+Oddities::Application.routes.draw do
   # get "archive/index"
   # get "home/index"
 

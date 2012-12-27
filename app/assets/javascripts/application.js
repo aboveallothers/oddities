@@ -21,7 +21,7 @@ $(function() {
  	
  	$.ajaxSetup({cache: true});
 
-	$.getJSON(twitter_api_url + '?callback=?&rpp=3&q=from:' + twitter_user, function(data) {
+	$.getJSON(twitter_api_url + '?callback=?&rpp=1&q=from:' + twitter_user, function(data) {
     	$.each(data.results, function(i, tweet) {
 	        if(tweet.text !== undefined) {
 	        	var date_tweet = new Date(tweet.created_at),
@@ -34,13 +34,4 @@ $(function() {
 	        }
     	});
   	});
-
-	$(window).scroll(function(){
-		$('header a').fadeIn(800);
-	});
-
-	$('.scroll').bind('click', function () {
-		$("html, body").animate({ scrollTop: '0' }, 500);
-		return false;
-	})
 });

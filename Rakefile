@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Blogonrails::Application.load_tasks
+Oddities::Application.load_tasks
